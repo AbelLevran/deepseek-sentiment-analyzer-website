@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Prediction - DeepSentiment</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="bg-animation"></div>
+
+    <nav>
+        <a href="../index.html" class="logo">DeepSentiment</a>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="single.html" class="active">Single Predict</a>
+            <a href="batch.html">Batch Predict</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
+            <h2>Analyze a Single Review</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Paste a single review text below to get instant
+                sentiment analysis.</p>
+
+            <div class="form-group">
+                <label for="reviewInput">Review Text</label>
+                <textarea id="reviewInput" rows="6"
+                    placeholder="Example: The app is great but it sometimes freezes..."></textarea>
+            </div>
+
+            <button id="analyzeBtn" class="btn btn-primary" style="width: 100%;">Analyze Sentiment</button>
+            <div class="loader" id="loader" style="margin-top: 1rem;"></div>
+
+            <div id="resultWidget" class="result-widget">
+                <div class="result-header">
+                    <h3 style="margin: 0;">Result</h3>
+                    <span id="sentimentLabel" class="sentiment-badge positif">Positif</span>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span style="color: var(--text-muted);">Confidence Score</span>
+                        <span id="scoreText" style="font-weight: 600;">95%</span>
+                    </div>
+                    <div class="progress-container">
+                        <div id="scoreBar" class="progress-bar" style="width: 95%; background-color: var(--success);">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card" style="max-width: 800px; margin: 2rem auto;">
+            <h3>History</h3>
+            <table class="data-table" id="historyTable">
+                <thead>
+                    <tr>
+                        <th>Text</th>
+                        <th>Sentiment</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- History rows will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/single.js"></script>
+</body>
+
+</html>

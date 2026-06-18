@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepSeek Sentiment Analysis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="bg-animation"></div>
+
+    <nav>
+        <a href="index.html" class="logo">DeepSentiment</a>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="pages/dashboard.html">Dashboard</a>
+            <a href="pages/single.html">Single Predict</a>
+            <a href="pages/batch.html">Batch Predict</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>Analyze Reviews with AI Precision</h1>
+            <p>Harness the power of our custom-trained Support Vector Machine to instantly determine the sentiment of
+                any text. Built specifically for analyzing DeepSeek app reviews.</p>
+            <div class="cta-buttons">
+                <a href="pages/single.html" class="btn btn-primary">Try Single Prediction</a>
+                <a href="pages/batch.html" class="btn btn-outline">Upload CSV Batch</a>
+            </div>
+        </section>
+
+        <section class="features"
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+            <div class="glass-card">
+                <h3 style="margin-bottom: 1rem; color: var(--primary);">Fast & Accurate</h3>
+                <p style="color: var(--text-muted)">Powered by TF-IDF and Linear SVM for robust classification of
+                    positive and negative reviews.</p>
+            </div>
+            <div class="glass-card">
+                <h3 style="margin-bottom: 1rem; color: var(--primary);">Slang Normalization</h3>
+                <p style="color: var(--text-muted)">Automatically handles internet slang and casual language to provide
+                    the most accurate sentiment analysis.</p>
+            </div>
+            <div class="glass-card">
+                <h3 style="margin-bottom: 1rem; color: var(--primary);">Batch Processing</h3>
+                <p style="color: var(--text-muted)">Analyze hundreds of reviews at once by uploading a CSV file. Get
+                    results instantly.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 DeepSentiment Analysis Web App. Powered by FastAPI & Vanilla JS.</p>
+    </footer>
+</body>
+
+</html>
