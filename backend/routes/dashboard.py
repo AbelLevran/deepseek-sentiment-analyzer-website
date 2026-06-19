@@ -4,7 +4,7 @@ from fastapi import APIRouter
 
 router = APIRouter()
 
-DATA_PATH = os.getenv("DATA_PATH", os.path.join(os.path.dirname(__file__), "../../data/hasil_pengumpulan_ulasan_deepseek_eng_8_mei.csv"))
+DATA_PATH = os.getenv("DATA_PATH", os.path.join(os.path.dirname(__file__), "../data/hasil_pengumpulan_ulasan_deepseek_eng_8_mei.csv"))
 
 @router.get("/dashboard-data")
 def get_dashboard_data():
