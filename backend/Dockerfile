@@ -1,17 +1,24 @@
-# 1. Gunakan image Python yang ringan
 FROM python:3.9-slim
 
-# 2. Set working directory di dalam container
+# Buat user non-root khusus untuk Hugging Face Spaces (wajib)
+RUN useradd -m -u 1000 user
+USER user
+ENV PATH="/home/user/.local/bin:$PATH"
+
 WORKDIR /app
 
-# 3. Salin semua file dari folder backend saat ini ke dalam folder /app di container
-COPY . /app
+# Salin file proyek ke dalam container dengan hak akses untuk user
+COPY --chown=user . /app
 
-# 4. Instal semua pustaka yang dibutuhkan
+# Instal pustaka yang dibutuhkan
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 5. Hugging Face Spaces secara otomatis mengekspos port 7860
+# Pra-unduh NLTK data ke direktori yang benar agar tidak error saat runtime
+RUN python -c "import nltk; nltk.download('stopwords', download_dir='/home/user/nltk_data'); nltk.download('punkt', download_dir='/home/user/nltk_data')"
+ENV NLTK_DATA="/home/user/nltk_data"
+
+# Ekspos port Hugging Face
 EXPOSE 7860
 
-# 6. Jalankan FastAPI menggunakan uvicorn di port 7860
+# Jalankan server API
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7860"]
