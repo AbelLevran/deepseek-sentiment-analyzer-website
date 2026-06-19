@@ -5,12 +5,16 @@ RUN useradd -m -u 1000 user
 USER user
 ENV PATH="/home/user/.local/bin:$PATH"
 
+# Set direktori utama
 WORKDIR /app
 
-# Salin file proyek ke dalam container dengan hak akses untuk user
+# Salin seluruh isi repositori (termasuk folder backend) ke dalam container
 COPY --chown=user . /app
 
-# Instal pustaka yang dibutuhkan
+# Pindah ke dalam folder backend tempat kode API berada
+WORKDIR /app/backend
+
+# Instal pustaka yang dibutuhkan dari dalam folder backend
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Pra-unduh NLTK data ke direktori yang benar agar tidak error saat runtime
@@ -20,5 +24,5 @@ ENV NLTK_DATA="/home/user/nltk_data"
 # Ekspos port Hugging Face
 EXPOSE 7860
 
-# Jalankan server API
+# Jalankan server API (berada di dalam folder backend)
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7860"]
