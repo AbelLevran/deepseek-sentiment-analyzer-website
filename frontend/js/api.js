@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:8000'; // Change this when deploying
+const API_BASE_URL = 'https://bellevran-deepsentiment-api.hf.space'; // Change this when deploying
 
 async function predictSingle(text) {
     try {
@@ -7,7 +7,7 @@ async function predictSingle(text) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text })
         });
-        
+
         if (!response.ok) throw new Error('API Error');
         return await response.json();
     } catch (error) {
@@ -23,7 +23,7 @@ async function predictBatch(texts) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ texts })
         });
-        
+
         if (!response.ok) throw new Error('API Error');
         return await response.json();
     } catch (error) {
